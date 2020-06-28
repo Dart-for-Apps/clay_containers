@@ -69,7 +69,7 @@ class ClayText extends StatelessWidget {
     Color colorValue = color ?? Color(0xFFf0f0f0);
     final Color outerColorValue = parentColor ?? colorValue;
     double fontSizeValue = style?.fontSize ?? (size ?? 14);
-    final TextStyle styleValue = style ?? DefaultTextStyle.of(context);
+    final TextStyle styleValue = style ?? DefaultTextStyle.of(context).style;
     final double spreadValue = spread ?? _getSpread(fontSizeValue);
     final bool embossValue = emboss ?? false;
 

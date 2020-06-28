@@ -1,3 +1,5 @@
+# v0.1.1+2 - Minor Fix
+
 # v0.1.1+1 - Minor Fix
 
 - Fix minor issues

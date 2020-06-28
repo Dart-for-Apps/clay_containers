@@ -1,4 +1,4 @@
-import 'package:clay_containers/clay_containers.dart';
+import 'package:clay_containers_plus/clay_containers.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -97,4 +97,3 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
     );
   }
 }
-
