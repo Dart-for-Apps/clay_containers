@@ -15,20 +15,40 @@ class ClayContainer extends StatelessWidget {
   final CurveType curveType;
   final int depth;
   final bool emboss;
+  final Curve curve;
+  final Duration duration;
+  final AlignmentGeometry alignment;
+  final BoxConstraints constraints;
+  final Decoration foregroundDecoration;
+  final EdgeInsetsGeometry margin;
+  final EdgeInsetsGeometry padding;
+  final Matrix4 transform;
+  final Function onEnd;
 
-  ClayContainer(
-      {this.child,
-      this.height,
-      this.width,
-      this.color,
-      this.surfaceColor,
-      this.parentColor,
-      this.spread,
-      this.borderRadius,
-      this.customBorderRadius,
-      this.curveType,
-      this.depth,
-      this.emboss});
+  ClayContainer({
+    this.child,
+    this.height,
+    this.width,
+    this.color,
+    this.surfaceColor,
+    this.parentColor,
+    this.spread,
+    this.borderRadius,
+    this.customBorderRadius,
+    this.curveType,
+    this.depth,
+    this.emboss,
+    this.curve = Curves.linear,
+    this.duration = const Duration(milliseconds: 100),
+    this.alignment,
+    this.constraints,
+    this.foregroundDecoration,
+    this.margin,
+    this.padding,
+    this.onEnd,
+    this.transform,
+    Key key,
+  }) : super(key: key);
 
   Color _getAdjustColor(Color baseColor, amount) {
     Map colors = {
@@ -118,10 +138,19 @@ class ClayContainer extends StatelessWidget {
         break;
     }
 
-    return Container(
+    return AnimatedContainer(
+      duration: duration,
+      curve: curve,
       height: heightValue,
       width: widthValue,
       child: child,
+      margin: margin,
+      padding: padding,
+      alignment: alignment,
+      constraints: constraints,
+      foregroundDecoration: foregroundDecoration,
+      onEnd: onEnd,
+      transform: transform,
       decoration: BoxDecoration(
           borderRadius: borderRadiusValue,
           color: colorValue,

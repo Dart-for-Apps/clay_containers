@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class ClayText extends StatelessWidget {
@@ -10,16 +12,37 @@ class ClayText extends StatelessWidget {
   final int depth;
   final double size;
   final bool emboss;
+  final Duration duration;
+  final Curve curve;
+  final Function onEnd;
+  final TextAlign textAlign;
+  final bool softWrap;
+  final TextOverflow overflow;
+  final int maxLines;
+  final TextWidthBasis textWidthBasis;
+  final TextHeightBehavior textHeightBehavior;
 
-  ClayText(this.text,
-      {this.parentColor,
-      this.textColor,
-      this.color,
-      this.spread,
-      this.depth,
-      this.style,
-      this.size,
-      this.emboss});
+  ClayText(
+    this.text, {
+    this.parentColor,
+    this.textColor,
+    this.color,
+    this.spread,
+    this.depth,
+    this.style,
+    this.size,
+    this.emboss,
+    this.duration = const Duration(milliseconds: 100),
+    this.curve = Curves.linear,
+    this.onEnd,
+    this.maxLines,
+    this.overflow,
+    this.softWrap,
+    this.textAlign,
+    this.textHeightBehavior,
+    this.textWidthBasis,
+    Key key,
+  }) : super(key: key);
 
   Color _getAdjustColor(Color baseColor, amount) {
     Map colors = {
@@ -71,8 +94,22 @@ class ClayText extends StatelessWidget {
     if (embossValue) colorValue = _getAdjustColor(colorValue, 0 - depthValue);
     if (textColor != null) colorValue = textColor;
 
-    return Text(text,
-        style: styleValue.copyWith(
-            color: colorValue, shadows: shadowList, fontSize: fontSizeValue));
+    return AnimatedDefaultTextStyle(
+      duration: duration,
+      curve: curve,
+      onEnd: onEnd,
+      maxLines: maxLines,
+      overflow: overflow,
+      softWrap: softWrap,
+      textAlign: textAlign,
+      textHeightBehavior: textHeightBehavior,
+      textWidthBasis: textWidthBasis,
+      style: styleValue.copyWith(
+        color: colorValue,
+        shadows: shadowList,
+        fontSize: fontSizeValue,
+      ),
+      child: Text(text),
+    );
   }
 }

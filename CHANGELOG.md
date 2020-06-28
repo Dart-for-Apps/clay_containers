@@ -1,32 +1,6 @@
-## [0.2.2] - January 25, 2020
+# v0.1.0 - First Version
 
-* Yet another minor documentation adjustment.
+First version of clay containers plus.
 
-## [0.2.1] - January 25, 2020
-
-* Made default embossed surfaces brighter.
-
-## [0.2.0] - January 24, 2020
-
-* Introduce the `ClayText` widget.
-* Add the `emboss` property to `ClayContainer`s.
-* Allow arbitrarily setting `surfaceColor` and `parentColor` for `ClayContainer`s.
-* `ClayContainer`s no longer require a color, but will instead default to `Color(0xFFF0F0F0)`.
-* Documentation updates.
-
-## [0.1.12] - January 22, 2020
-
-* Documentation changes.
-
-## [0.1.11] - January 22, 2020
-
-* Documentation changes.
-* Removed unused variable.
-
-## [0.1.2] - January 24, 2020
-
-* This release was a mistake. 0.1.2 is meant to be the release after 0.1.12. I misunderstood the way the version numbering works. 
-
-## [0.1.1] - January 21, 2020
-
-* Initial release.
+- Animated Clay Container
+- Animated Clay Text
