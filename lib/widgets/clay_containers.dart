@@ -87,25 +87,21 @@ class ClayContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double heightValue = height == null ? null : height;
-    final double widthValue = width == null ? null : width;
-    final int depthValue = depth == null ? 20 : depth;
-    Color colorValue = color == null ? Color(0xFFf0f0f0) : color;
-    final Color parentColorValue =
-        parentColor == null ? colorValue : parentColor;
-    final Color surfaceColorValue =
-        surfaceColor == null ? colorValue : surfaceColor;
-    final double spreadValue = spread == null ? 6 : spread;
-    final bool embossValue = emboss == null ? false : emboss;
-    BorderRadius borderRadiusValue = borderRadius == null
-        ? BorderRadius.zero
-        : BorderRadius.circular(borderRadius);
+    final double heightValue = height;
+    final double widthValue = width;
+    final int depthValue = depth ?? 20;
+    Color colorValue = color ?? Color(0xFFf0f0f0);
+    final Color parentColorValue = parentColor ?? colorValue;
+    final Color surfaceColorValue = surfaceColor ?? colorValue;
+    final double spreadValue = spread ?? 6;
+    final bool embossValue = emboss ?? false;
+    BorderRadius borderRadiusValue =
+        BorderRadius.circular(borderRadius ?? Radius.zero);
 
     if (customBorderRadius != null) {
       borderRadiusValue = customBorderRadius;
     }
-    final CurveType curveTypeValue =
-        curveType == null ? CurveType.none : curveType;
+    final CurveType curveTypeValue = curveType ?? CurveType.none;
 
     List<BoxShadow> shadowList = [
       BoxShadow(

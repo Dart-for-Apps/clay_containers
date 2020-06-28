@@ -36,11 +36,11 @@ class ClayText extends StatelessWidget {
     this.curve = Curves.linear,
     this.onEnd,
     this.maxLines,
-    this.overflow,
-    this.softWrap,
+    this.overflow = TextOverflow.clip,
+    this.softWrap = true,
     this.textAlign,
     this.textHeightBehavior,
-    this.textWidthBasis,
+    this.textWidthBasis = TextWidthBasis.parent,
     Key key,
   }) : super(key: key);
 
@@ -65,17 +65,13 @@ class ClayText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final int depthValue = depth == null ? 40 : depth;
-    Color colorValue = color == null ? Color(0xFFf0f0f0) : color;
-    final Color outerColorValue =
-        parentColor == null ? colorValue : parentColor;
-    double fontSizeValue = size == null ? 14 : size;
-    final TextStyle styleValue = style == null ? TextStyle() : style;
-    fontSizeValue =
-        styleValue.fontSize != null ? styleValue.fontSize : fontSizeValue;
-    final double spreadValue =
-        spread == null ? _getSpread(fontSizeValue) : spread;
-    final bool embossValue = emboss == null ? false : emboss;
+    final int depthValue = depth ?? 40;
+    Color colorValue = color ?? Color(0xFFf0f0f0);
+    final Color outerColorValue = parentColor ?? colorValue;
+    double fontSizeValue = style?.fontSize ?? (size ?? 14);
+    final TextStyle styleValue = style ?? DefaultTextStyle.of(context);
+    final double spreadValue = spread ?? _getSpread(fontSizeValue);
+    final bool embossValue = emboss ?? false;
 
     List<Shadow> shadowList = [
       Shadow(
